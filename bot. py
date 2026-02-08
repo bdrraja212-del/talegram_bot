@@ -1,0 +1,11 @@
+from telegram import Update
+from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
+
+TOKEN = "8578239171:AAF-VXI1B4j7_6lGGckaJD_R5nIfAlEC_rs"
+
+async def reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("مرحبا! أنا بوت 🤖")
+
+app = ApplicationBuilder().token(TOKEN).build()
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, reply))
+app.run_polling()
